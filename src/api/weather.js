@@ -34,3 +34,10 @@ export const getForecast = async (lat, lon) => {
 
     return res.data
 }
+
+export const suggestCities = async (name) => {
+    const res = await geo.get('/search', {
+        params: { name, count: 5, language: 'id' },
+    })
+    return res.data.results ?? []
+}
